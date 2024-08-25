@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
@@ -18,11 +18,25 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Hi user!',
-            style:TextStyle(
-              color: Colors.white,
-              fontSize: 18
-            ),),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Hi user!',
+                style:TextStyle(
+                  color: Colors.white,
+                  fontSize: 18
+                ),),
+                
+                Container(
+                   height: 50,
+                   width: 50,
+                   decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.07    ),
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                   ),
+                )
+              ],
+            ),
              SizedBox(height: 16,),
             Text("let's find\nbest IT proffesionals",
             style: TextStyle(

@@ -5,9 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_firstapp/models/categories.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
    HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<CategoryModel> categoriedata =CategoryModel.getcategories();
 
   @override
@@ -42,32 +47,44 @@ class HomePage extends StatelessWidget {
         
        Container(
         height: 50,
-        margin: EdgeInsets.all(16),
+        margin: EdgeInsets.all(17),
          child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder:(context, index) 
           {
-            return Container(
-              height: 50,
-              width: 50,
-              child: SvgPicture.asset(categoriedata[index].vector),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: categoriedata[index].isselected ? 
-                    Colors.purple : Colors.black12,
-                    offset: Offset(0, 4),
-                    blurRadius: 25,
-                  )
-                ],
-                color: categoriedata[index].isselected ?
-                 Color.fromARGB(255, 97, 36, 108) : Colors.white,
+            return GestureDetector(
+              onTap: (){
+                for (var item in categoriedata){
+                  item.isselected = false;
+                }
+                categoriedata[index].isselected = true;
+                setState(() {}
+                );
+              } ,
+              child: Container(
+                height: 60,
+                width: 50,
+                child: SvgPicture.asset(categoriedata[index].vector),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(4),
+                  
+                  boxShadow: [
+                    BoxShadow(
+                      color: categoriedata[index].isselected ? 
+                      const Color.fromARGB(104, 155, 39, 176) : Colors.black12,
+                      offset: Offset(0, 4),
+                      blurRadius: 60,
+                    )
+                  ],
+                  color: categoriedata[index].isselected ?
+                   Color.fromARGB(125, 97, 36, 108) : Colors.white,
+                ),
               ),
             );
            
          }, 
-         separatorBuilder:(context, index) => const SizedBox(width: 80,), 
+         separatorBuilder:(context, index) => const SizedBox(width: 53,), 
          itemCount :categoriedata.length),
        )
       ],
@@ -109,7 +126,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
            SizedBox(height: 16,),
-          Text("let's find\nbest IT proffesionals",
+          Text("let's find\nbest IT Proffesionals",
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,

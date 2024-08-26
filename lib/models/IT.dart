@@ -67,7 +67,7 @@ class ITModel{
         name:"Injal Acharya",
         image: "assets/images/injal.jpg",
         imagebox: const Color.fromARGB(255, 247, 163, 157).withOpacity(0.5),
-        category:"front end developer and ethical hacker",
+        category:"front end developer",
         specialities:['JavaScript','html','css'],
         score: 3.1,
     
@@ -106,7 +106,7 @@ class ITModel{
         name: "Bibhab Basnet",
         image: "assets/images/bibhab.jpg",
         imagebox: const Color.fromARGB(255, 247, 163, 157).withOpacity(0.5),
-        category:"backend and python developer",
+        category:"python developer",
         specialities:['python','sql'],
         score: 3.5,
     

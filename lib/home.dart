@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_firstapp/models/IT.dart';
 import 'package:my_firstapp/models/categories.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<CategoryModel> categoriedata =CategoryModel.getcategories();
-
+  final List<ITModel> ITdata = ITModel.getIT();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           header(),
           categories(),
+          IT(),
         ],
       ),
     );
@@ -67,14 +69,14 @@ class _HomePageState extends State<HomePage> {
                 child: SvgPicture.asset(categoriedata[index].vector),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(9),
                   
                   boxShadow: [
                     BoxShadow(
                       color: categoriedata[index].isselected ? 
                       const Color.fromARGB(104, 155, 39, 176) : Colors.black12,
                       offset: Offset(0, 4),
-                      blurRadius: 60,
+                      blurRadius: 10,
                     )
                   ],
                   color: categoriedata[index].isselected ?
@@ -155,4 +157,13 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  Widget IT () {
+   return ListView.separated(
+    shrinkWrap: true,
+    itemBuilder:(context, index) {
+     return Container();
+   }, separatorBuilder:(context, index) => const SizedBox(height: 16,),
+    itemCount: ITdata.length);
 }
+}
+
